@@ -100,7 +100,9 @@ async def get_current_user(token: str = Depends(reuseable_oauth)) -> SystemUser:
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    user: Union[dict[str, Any], None] = db.get(token_data.sub, None)
+    # user: Union[dict[str, Any], None] = db.get(token_data.sub, None)
+    
+    user = db.user.find_one({"email": token_data.sub})
 
     if user is None:
         raise HTTPException(
