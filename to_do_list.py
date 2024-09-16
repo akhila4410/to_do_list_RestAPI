@@ -15,7 +15,7 @@ from fastapi.responses import RedirectResponse
 app = FastAPI()
 
 # Connect python with MongoDB
-cl = MongoClient("mongodb+srv://akki712:4410@awsinstances.2sixhn0.mongodb.net/test")
+cl = MongoClient("mongodb+srv://akki712:4410@awsinstances.2sixhn0.mongodb.net/?retryWrites=true&w=majority&appName=awsinstance")
 db = cl["to_do"]
 collection  = db["collection"]
 
