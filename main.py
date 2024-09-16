@@ -2,6 +2,7 @@ import uvicorn
 from fastapi import FastAPI, HTTPException, Query, status
 from pymongo import MongoClient
 from pydantic import BaseModel
+from fastapi.responses import RedirectResponse
 
 app = FastAPI()
 
