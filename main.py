@@ -3,9 +3,18 @@ from fastapi import FastAPI, HTTPException, Query, status
 from pymongo import MongoClient
 from pydantic import BaseModel
 from fastapi.responses import RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
+
+
 
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change this to specific origins if needed
+    allow_credentials=True,
+    allow_methods=["*"],  # Adjust as needed
+    allow_headers=["*"],
+)
 # Connect Python with MongoDB
 cl = MongoClient("mongodb+srv://akki712:4410@awsinstances.2sixhn0.mongodb.net/?retryWrites=true&w=majority&appName=awsinstance")
 db = cl["to_do"]
